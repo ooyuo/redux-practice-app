@@ -2,15 +2,20 @@ import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import BottomTabNavigation from "./src/navigation/BottomTabNavigation";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { BottomTabNavigation } from "./src/navigation/BottomTabNavigation";
+import { persisor, store } from "./src/store/store";
 
 export default function App() {
   return (
     <SafeAreaProvider>
       <Provider store={store}>
-        <NavigationContainer>
-          <BottomTabNavigation />
-        </NavigationContainer>
+        <PersistGate persistor={persisor}>
+          <NavigationContainer>
+            <BottomTabNavigation />
+          </NavigationContainer>
+        </PersistGate>
       </Provider>
     </SafeAreaProvider>
   );

@@ -1,9 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
+import { HistoryListScreen } from "../screens/HistoryListScreen";
+import { HomeScreen } from "../screens/HomeScreen";
+import { TabIcon } from "../components/TabIcon";
 
 const Tab = createBottomTabNavigator();
 
-function BottomTabNavigation() {
+export const BottomTabNavigation = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => {
@@ -28,6 +31,4 @@ function BottomTabNavigation() {
       <Tab.Screen name="History" component={HistoryListScreen}></Tab.Screen>
     </Tab.Navigator>
   );
-}
-
-export default BottomTabNavigation;
+};
